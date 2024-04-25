@@ -141,6 +141,12 @@ jobs:
           for file in $(find build -type f -name "*.apk"); do
             gh release upload ${{ env.RELEASE_VERSION }} $file
           done
+          
+          # get all zip files in ./build/* directory, for each run gh release upload
+          for file in $(find build -type f -name "*.zip"); do
+            gh release upload ${{ env.RELEASE_VERSION }} $file
+          done
+          
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
